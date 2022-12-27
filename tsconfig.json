@@ -16,5 +16,5 @@
       "noImplicitAny": true
     },
     "include": ["./**/*"],
-    "exclude": ["./node_modules"]
+    "exclude": ["./node_modules", "./token.ts", "./config.ts"]
   }

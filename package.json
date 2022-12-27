@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.7.1",
-    "guilded.js": "^0.15.1"
+    "guilded.js": "^0.15.1",
+    "revchatapi": "^1.0.8"
   }
 }

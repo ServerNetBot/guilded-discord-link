@@ -1,6 +1,6 @@
 import {Client} from 'guilded.js';
 import {Client as DClient} from 'discord.js';
-import { DTOKEN, TOKEN } from './token';
+import { DTOKEN, TOKEN, DiscordID, GuildedID } from './config';
 const client = new Client({token: TOKEN});
 const dclient = new DClient({
     intents: ["Guilds", "GuildMessages", "MessageContent"]
@@ -12,17 +12,17 @@ client.on("ready", () => {
 
 client.on("messageCreated", (message) => {
     if(message.author?.type == 0) return;
-    if(message.channelId != "f5b11ae7-5b69-4a7b-94be-e26a538c395f") return;
-    const c = dclient.channels.cache.get("1057375829442703441")
+    if(message.channelId != GuildedID) return;
+    const c = dclient.channels.cache.get(DiscordID)
     if(!c || c.type !== 0) return;
 
     c.send(message.content);
 });
 
 dclient.on("messageCreate", (message) => {
-    if(message.channelId !== "1057375829442703441") return;
+    if(message.channelId !== DiscordID) return;
     if(message.author.bot) return;
-    client.channels.fetch("f5b11ae7-5b69-4a7b-94be-e26a538c395f").then(channel => {
+    client.channels.fetch(GuildedID).then(channel => {
         console.log(channel.name);
         channel.send(message.content);
     }).catch(e => console.log(e));
